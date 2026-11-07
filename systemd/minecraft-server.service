@@ -1,0 +1,39 @@
+[Unit]
+Description=Minecraft Java dedicated server
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/minecraft-server/state.json
+
+[Service]
+Type=simple
+User=minecraft
+Group=minecraft
+WorkingDirectory=/var/lib/minecraft-server
+ExecStart=/usr/bin/python3 -I /usr/local/lib/minecraft-server/launcher.py
+Restart=no
+KillSignal=SIGTERM
+KillMode=mixed
+TimeoutStopSec=180
+SendSIGKILL=no
+RuntimeDirectory=minecraft-server
+RuntimeDirectoryMode=0700
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/minecraft-server
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=minecraft
+
+[Install]
+WantedBy=multi-user.target

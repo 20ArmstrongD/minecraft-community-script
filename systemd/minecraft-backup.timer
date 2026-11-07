@@ -1,0 +1,11 @@
+[Unit]
+Description=Scheduled Minecraft backups
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+Persistent=false
+RandomizedDelaySec=5m
+Unit=minecraft-backup.service
+
+[Install]
+WantedBy=timers.target

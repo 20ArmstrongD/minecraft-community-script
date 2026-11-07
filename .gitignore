@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.tar.gz
+*.sha256
+config.local.env

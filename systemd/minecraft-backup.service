@@ -1,0 +1,9 @@
+[Unit]
+Description=Consistent stopped Minecraft backup
+After=minecraft-server.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/minecraft backup --scheduled
+TimeoutStartSec=infinity
+UMask=0077
